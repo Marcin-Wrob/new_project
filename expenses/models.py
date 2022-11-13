@@ -1,5 +1,6 @@
 import datetime
 from django.db import models
+# from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -25,3 +26,5 @@ class Expense(models.Model):
 
     def __str__(self):
         return f'{self.date} {self.name} {self.amount}'
+
+

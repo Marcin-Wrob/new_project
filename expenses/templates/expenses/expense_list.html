@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+ {% extends "base.html" %}
 
 {% block content %}
 
@@ -8,6 +8,7 @@
   {{form.as_p}}
   <button type="submit">search</button>
 </form>
+
 <br>
 <table border="1">
 	<caption>Expenses</caption>
@@ -47,6 +48,12 @@
 <hr>
 <table border="1">
   <caption>Summary per category</caption>
+  <thead>
+    <tr>
+		<th>category</th>
+		<th>amount</th>
+	</tr>
+  </thead>
   <tr>
     {% for category, total in summary_per_category.items %}
 	<tr>
@@ -54,6 +61,56 @@
 		<td>{{total|floatformat:2}}</td>
 	</tr>
 	{% endfor %}
-  </tr>
+
+
+	<tr>
+   		<td>Total expense</td>
+   		<td>{{total_amount_spent|floatformat:2}}</td>
+	</tr>
+
+
 </table>
+<hr>
+
+ <table border="1">
+	<caption>Summary expense per year-month</caption>
+	<thead>
+	  <tr>
+		<th>category</th>
+		<th>year-month</th>
+	  </tr>
+	</thead>
+	<tbody>
+
+	{% for amount, month in total_per_month.items %}
+	  <tr>
+		<td>{{amount__sum}}</td>
+		<td>{{month}}</td>
+	  </tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+
+ <hr>
+
+ <table border="1">
+	<caption>Summary expense per number</caption>
+	<thead>
+	  <tr>
+		<th>category</th>
+		<th>number of transactions</th>
+	  </tr>
+	</thead>
+	<tbody>
+
+	{% for category, total in num_expense_per_month.items %}
+	  <tr>
+		<td>{{category}}</td>
+		<td>{{name__count}}</td>
+	  </tr>
+	{% endfor %}
+	</tbody>
+</table>
+
 {% endblock %}
